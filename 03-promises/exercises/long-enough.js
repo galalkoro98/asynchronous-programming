@@ -11,18 +11,18 @@ const { log, error } = labeledLogger();
 */
 
 // resolve/reject based on length of user input
-_ _((_, _) => {
+new Promise((resolve, reject) => {
   const userInput = prompt('enter something longer than 5 characters');
   if (userInput !== null && userInput.length > 5) {
-    _('your input is long enough');
+    reject('your input is long enough');
   } else {
-    _('your input is too short');
+    resolve('your input is too short');
   }
 })
-  ._(resolvedValue => {
+  .then(resolvedValue => {
     log('resolved value: ', resolvedValue);
   })
-  ._(rejectionValue => {
+  .catch(rejectionValue => {
     log('rejected value: ', rejectionValue);
   });
 
