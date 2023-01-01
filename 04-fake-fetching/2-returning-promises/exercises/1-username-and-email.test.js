@@ -6,10 +6,21 @@ const { log } = labeledLogger();
 
 // --- declare function ---
 
+
+
 /**
  *
  */
-const usernameAndEmail = () => {};
+const usernameAndEmail = (id=1) => {
+  const userPromise = fetchUserById(id);
+  const readName = (user) => {
+    log('fetching user ' + id);
+    log(`user ${id}:`, user);
+    return user.id + '.' + ' ' + user.username + ', ' + user.email;
+  };
+  const namePromise = userPromise.then(readName);
+ return namePromise;
+};
 
 // --- test function ---
 
