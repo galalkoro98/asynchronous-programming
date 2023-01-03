@@ -3,7 +3,15 @@ import { fetchUserById } from '../../../lib/fetch-user-by-id/index.js';
 /**
  *
  */
-const findGeoCoordinates = async (ids = []) => {};
+const findGeoCoordinates = async (ids = []) => {
+  const promises = ids.map((id) => fetchUserById(id));
+  const users = await Promise.all(promises);
+  const coordinates = users.map((user) => {
+    const { address: { geo } } = user;
+    return geo;
+  });
+  return coordinates;
+};
 
 // --- --- tests --- ---
 
