@@ -4,7 +4,7 @@
   "description": "the Async module for HYF Belgium",
   "type": "module",
   "scripts": {
-    "test": "node --experimental-vm-modules node_modules/.bin/jest --silent ",
+    "test": "jest",
     "format": "prettier --write ./"
   },
   "repository": {
