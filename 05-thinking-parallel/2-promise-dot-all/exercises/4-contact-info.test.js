@@ -8,11 +8,14 @@ const contactDetails = async (ids = []) => {
   const users = await Promise.all(promises);
   const details = users.map((user) => {
     const { id, email, phone, website } = user;
-    if (user) {
-      
-      return `${id}. ${email}, ${phone}, ${website}`;
+    const notIdFound = ids.some(id => id > 10 || id === 0 || id < 0);
+    const emailNotFound = ['Not Found: ', 'there is no user with id'];
+
+
+    if (notIdFound) { 
+      return `${emailNotFound} ${notIdFound}`;
     }else{
-      return `404: Not Found: there is no user with id ${id}`;
+      return `${id}. ${email}, ${phone}, ${website}`;
     }
   });
   return details;
