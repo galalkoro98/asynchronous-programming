@@ -8,7 +8,25 @@ const { log } = labeledLogger();
  *
  * @async
  */
-const usernameAndEmail = async () => {};
+const usernameAndEmail = async (id=1) => {
+  log('fetching user ' + id);
+  const userPromise = fetchUserById(id);
+
+  const readName = (user) => {
+    log(`user ${id}`, user);
+    const userId = user.id;
+    const userName = user.username;
+    const userEmail = user.email;
+    const info1 = [userId+'.'];
+    const info2 = [userName+','];
+    const info3 = [userEmail];
+    const info = info1.concat(info2,info3);
+    return info.join(' ');
+}
+
+const namePromise = userPromise.then(readName);
+return namePromise;
+}
 
 describe("usernameAndEmail returns the user's id, name and email", () => {
   it("returns user 2's info", async () => {
