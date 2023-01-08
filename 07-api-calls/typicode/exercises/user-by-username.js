@@ -12,7 +12,7 @@ import { ORIGIN } from '../config.js';
 export const userByUsername = async (userName = '') => {
   // --- declare your resource's URL ---
   // hint: ctr-f "filter" -> https://github.com/typicode/json-server
-  const URL = _;
+  const URL = `${ORIGIN}/users` + `?username=${userName}`;
 
   // --- fetch the API data (this works!) ---
   const encodedURL = encodeURI(URL);
@@ -31,7 +31,11 @@ export const userByUsername = async (userName = '') => {
 
   // --- process the fetched data (if necessary) ---
   //   you do not need to use `await` below this comment
-  const user = _;
+  const user = data.length > 0;
+    if (data.length > 0) {
+      return data[0];
+    }
+    return null;
 
   // --- return the final data ---
   return user;
