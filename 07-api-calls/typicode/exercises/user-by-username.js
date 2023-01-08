@@ -32,11 +32,13 @@ export const userByUsername = async (userName = '') => {
   // --- process the fetched data (if necessary) ---
   //   you do not need to use `await` below this comment
   const user = data.length > 0;
-    if (data.length > 0) {
+    if (user) {
       return data[0];
+    }else{
+
+      return null;
     }
-    return null;
 
   // --- return the final data ---
-  return user;
+  // return user;
 };

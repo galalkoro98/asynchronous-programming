@@ -11,9 +11,7 @@ import { ORIGIN } from '../config.js';
 export const todosByCompleted = async (completed=true) => {
   // --- declare your resource's URL ---
   // use params to fetch only the todos you need
-  const URL = `${ORIGIN}/todos` + `?completed=${
-    completed ? 'true' : 'false'
-  }`;
+  const URL = `${ORIGIN}/todos` + `?completed=${completed ? 'true' : 'false'}`;
 
   // --- fetch the API data (this works!) ---
   const encodedURL = encodeURI(URL);
